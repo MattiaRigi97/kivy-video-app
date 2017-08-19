@@ -1,0 +1,99 @@
+#:kivy 1.9.0
+
+<ScreenOne>:
+    name: "screen1"
+    ScrollView:
+        pos_hint: {'bottom':1}
+        do_scroll_y: True
+        GridLayout:
+            name: "screen1"
+            cols: 1
+            padding: 0
+            spacing: 0
+            #size_hint: None, None
+
+            size_hint_y: None
+            height: self.minimum_height
+
+            Button:
+                text: "1"
+                background_color: (0.502, 0, 0.502, 1) if self.state == 'normal' else (0.502, 0, 0.502, .75)
+                on_release: root.onNextScreen(self, 'small')
+
+            Button:
+                text: "2"
+                background_color: (0, 0, 1, 1) if self.state == 'normal' else (0, 0, 1,.75)
+                on_release: root.onNextScreen(self, 'sample1')
+
+            Button:
+                text: "3"
+                background_color: (0.251, 0.878, 0.816, 1) if self.state == 'normal' else (0.251, 0.878, 0.816,.75)
+                on_release: root.onNextScreen(self, 'sample2')
+
+            Button:
+                text: "4"
+                background_color: (0, 0.502, 0, 1) if self.state == 'normal' else (0, 0.502, 0, .75)
+                on_release: root.onNextScreen(self, 'sample3')
+
+            Button:
+                text: "5"
+                background_color: (1, 1, 0, 1) if self.state == 'normal' else (1, 1, 0, .75)
+                on_release: root.onNextScreen(self, 'sample4')
+
+            Button:
+                text: "6"
+                background_color: (1, 0.843, 0,1) if self.state == 'normal' else (1, 0.843, 0,.75)
+                on_release: root.onNextScreen(self, 'sample5')
+
+            Button:
+                text: "7"
+                background_color: (1, 0.647, 0, 1) if self.state == 'normal' else (1, 0.647, 0, .75)
+                on_release: root.onNextScreen(self, 'sample6')
+
+            Button:
+                text: "8"
+                background_color: (1, 0.549, 0, 1) if self.state == 'normal' else (1, 0.549, 0, .75)
+                on_release: root.onNextScreen(self, 'sample7')
+
+            Button:
+                text: "9"
+                background_color: (1, 0, 0, 1) if self.state == 'normal' else (1, 0, 0, .75)
+                on_release: root.onNextScreen(self, 'sample8')
+
+<ScreenTwo>:
+    GridLayout:
+        name: "ScreenGrid"
+        pos_hint: {'top': 1}
+        cols:1
+        rows:2
+        ActionBar:
+            pos_hint: {'top': 1}
+            height:'100sp'
+            ActionView:
+                ActionPrevious:
+                    with_previous: True
+                    on_release: root.onBackBtn()
+
+<Manager>:
+    id: screen_manager
+
+    screen_one: screen_one
+    screen_two: screen_two
+
+    ScreenOne:
+        id: screen_one
+        name: 'screen1'
+        manager: screen_manager
+
+    ScreenTwo:
+        id: screen_two
+        name: 'screen2'
+        manager: screen_manager
+
+<VideoPlayer>:
+    options: {'eos': 'loop'}
+    allow_stretch:True
+
+<Button>:
+    height: '100sp'
+    size_hint_y: None
