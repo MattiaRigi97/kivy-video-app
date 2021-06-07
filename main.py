@@ -29,7 +29,7 @@ class ScreenOne(Screen):
     def onNextScreen(self, btn, fileName):
         self.manager.list_of_prev_screens.append(btn.parent.name)
         self.manager.current = 'screen2'
-        self.manager.screen_two.test_on_enter('Resources/Videos/' + fileName +'.mp4')
+        self.manager.screen_two.test_on_enter(r"C:\Users\matti\github\kivy-video-app\Resources\Videos\sample1.mp4")
 
 class Manager(ScreenManager):
     transition = NoTransition()
